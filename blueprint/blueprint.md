@@ -117,3 +117,7 @@ This markdown architecture aligns directly with the master system backend schema
 | **Risk Controls** | `risk_management_and_controls` | Outlines execution filters, session times, pip buffers, and early invalidation rules. |
 
 ------------------------------
+
+## Entry Model
+
+![Entry Model](../images/entry_model.jpg)
