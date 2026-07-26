@@ -6,12 +6,20 @@
 [![Execution Framework](https://shields.io)](#)
 
 A high-velocity technical trading framework designed for scalping and intraday execution using multi-timeframe moving average alignments and momentum oscillators.
----## 📋 Table of Contents1. [System Specifications & Infrastructure](#1-system-specifications--infrastructure)
+
+---
+## 📋 Table of Contents
+1. [System Specifications & Infrastructure](#1-system-specifications--infrastructure)
 2. [⚙️ Core Indicators & Settings](#2-️-core-indicators--settings)
 3. [🧠 Master Rulebook & Execution Checklist](#3-master-rulebook--execution-checklist)
 4. [🛑 Risk Management Constraints & Controls](#4-risk-management-constraints--controls)
 5. [🗺️ Step-by-Step Data Blueprint Mapping](#5-step-by-step-data-blueprint-mapping)
----## 1. System Specifications & Infrastructure### Trading Profile* **Trading Style:** High-Velocity Scalping and Intraday Day Trading.* **Target Assets:** High-Volatility Forex Pairs & Metals (e.g., GBP/JPY, EUR/USD, GBP/USD, XAU/USD).* **Risk-to-Reward (R:R) Profile:** Strict 0.5 R Target (Take Profit is exactly half of the Stop Loss distance).* **Stop Loss Mechanic:** 1-Hour Chart ATR (Average True Range) Volatility Buffer.
+---
+## 1. System Specifications & Infrastructure### Trading Profile
+* **Trading Style:** High-Velocity Scalping and Intraday Day Trading.
+* **Target Assets:** High-Volatility Forex Pairs & Metals (e.g., GBP/JPY, EUR/USD, GBP/USD, XAU/USD).
+* **Risk-to-Reward (R:R) Profile:** Strict 0.5 R Target (Take Profit is exactly half of the Stop Loss distance).
+***Stop Loss Mechanic:** 1-Hour Chart ATR (Average True Range) Volatility Buffer.
 ### Timeframe Matrix
 
 ┌─────────────────────────────────────────────────────────┐
@@ -30,7 +38,6 @@ A high-velocity technical trading framework designed for scalping and intraday e
 │ EXECUTION CHART: 5-MINUTE (5M) │
 │ [Precise Scalp Triggers] │
 └─────────────────────────────────────────────────────────┘
-
 
 ---
 
@@ -94,9 +101,7 @@ The 15-minute chart acts as the immediate structural gatekeeper to prevent buyin
   * **London Open:** 7:00 AM – 10:00 AM GMT
   * **New York Overlap:** 12:00 PM – 4:00 PM GMT
 
----
-
-## 5. 🗺️ Step-by-Step Data Blueprint Mapping
+---  ## 5. 🗺️ Step-by-Step Data Blueprint Mapping
 
 This markdown architecture aligns directly with the master system backend schemas as follows:
 
