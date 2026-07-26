@@ -1,0 +1,93 @@
+# ==============================================================================
+# UNIFIED TRADING BLUEPRINT: 8/20/50 EMA + STOCHASTIC SCALPING SYSTEM
+# ==============================================================================
+
+system_overview:
+  title: "Unified Trading Blueprint"
+  subtitle: "8/20/50 EMA + Stochastic Scalping System"
+  trading_style: "High-Velocity Scalping and Intraday Day Trading"
+  target_assets:
+    - "GBP/JPY"
+    - "EUR/USD"
+    - "GBP/USD"
+    - "XAU/USD"
+
+timeframes:
+  execution_charts:
+    - "5-Minute (Scalping)"
+    - "15-Minute (Intraday Swing)"
+  anchor_timeframe: "1-Hour (Macro Trend Filter)"
+
+risk_reward_profile:
+  target_rr_ratio: 0.5
+  take_profit_rule: "Target distance is exactly 50% of Stop Loss distance"
+  stop_loss_mechanic: "1-Hour Chart ATR (Average True Range) Volatility Buffer"
+  minimum_required_win_rate: "> 67% (to breakeven factoring spreads & commissions)"
+
+core_indicators:
+  moving_averages:
+    - name: "8 EMA"
+      type: "Exponential Moving Average"
+      role: "Fast Momentum Trigger & Tape Filter"
+    - name: "20 EMA"
+      type: "Exponential Moving Average"
+      role: "Short-Term Equilibrium Line & Primary Scalp Pullback Zone"
+    - name: "50 EMA"
+      type: "Exponential Moving Average"
+      role: "Intermediate Structural Value & Master Trend Line"
+  stochastic_oscillator:
+    parameters:
+      k_period: 14
+      d_period: 3
+      slowing: 3
+    bounds:
+      overbought: ">= 80"
+      oversold: "<= 20"
+    role: "Smooth Momentum Lookback Filter"
+
+execution_rules:
+  rule_1_macro_filter:
+    timeframe: "1-Hour"
+    description: "Establish macro market bias prior to lower timeframe execution"
+    conditions:
+      long_only: "Price > 1H 50 EMA AND 1H 8 EMA sloping upward above 1H 20 EMA"
+      short_only: "Price < 1H 50 EMA AND 1H 8 EMA sloping downward below 1H 20 EMA"
+      no_trade_zone: "1H EMAs are tangled, flat, or squeezing together (stay flat)"
+
+  rule_2_timeframe_synchronicity:
+    timeframe: "15-Minute"
+    description: "Structural gatekeeper to avoid buying into heavy drops or shorting into rallies"
+    conditions:
+      long_alignment: "Price sitting cleanly above or holding support at 15m 20 or 50 EMA"
+      fake_dip_constraint: >
+        If 15m candle is a solid, aggressive red bar pushing down, ignore 5m buy signals.
+        Wait for 15m candle to hit its EMA, stall, and leave a rejection wick before entry.
+
+  rule_3_execution_setup:
+    timeframe: "5-Minute"
+    setups:
+      buy_setup:
+        trend: "Price trading above 5m 50 EMA"
+        momentum: "5m 8 EMA is above 20 EMA, both angling upward"
+        pullback: "Price retraces downward into 20 EMA or 50 EMA zone"
+        oscillator_check: "Stochastic (14, 3, 3) drops below 20 (Oversold)"
+        trigger: "Stochastic %K crosses above %D AND 5m candle closes firmly back above 8 EMA"
+      sell_setup:
+        trend: "Price trading below 5m 50 EMA"
+        momentum: "5m 8 EMA is below 20 EMA, both angling downward"
+        pullback: "Price bounces upward into 20 EMA or 50 EMA zone"
+        oscillator_check: "Stochastic (14, 3, 3) rises above 80 (Overbought)"
+        trigger: "Stochastic %K crosses below %D AND 5m candle closes firmly back below 8 EMA"
+
+risk_management_and_controls:
+  volatility_buffer: "SL = 1-Hour ATR value (e.g., 30 pips SL -> 15 pips TP)"
+  pip_buffer_rule: "Add 3 to 5 pip buffer beyond 50 EMA / recent wick on high-volatility pairs (GBP/JPY, XAU/USD)"
+  entry_chase_constraint: "Skip trade if 5m trigger candle is an oversized momentum bar closing far from EMAs"
+  hard_structural_invalidation: "Exit manually immediately if 15m candle closes on the wrong side of its own 20 EMA"
+  timing_constraints:
+    allowed_sessions:
+      - name: "London Open"
+        hours: "07:00 AM - 10:00 AM GMT"
+      - name: "New York Overlap"
+        hours: "12:00 PM - 04:00 PM GMT"
+    prohibited_conditions: "Quiet mid-day, bank holiday sessions, or when EMAs flatten out"
